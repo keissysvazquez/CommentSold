@@ -23,6 +23,11 @@ exports.CreditCardPurchase = class CreditCardPurchase {
         this.zip = page.frameLocator('internal:attr=[title="Secure card payment input frame"i]').getByPlaceholder('ZIP')
         this.promotionalEmails = page.getByLabel('YES I would like to receive promotional emails')
         this.pay =  page.getByRole('button', { name: 'Credit card Pay With Card' })
+        this.addressfield = page.locator('.shipping-input-containers > div:nth-child(2) > .default-input')
+        this.cityfield = page.locator('#locality')
+        this.zipfield = page.locator('.address-row > div:nth-child(3) > .default-input')
+        this.statefield = page.locator('select[name="state"]')
+        this.addresssavebutton = page.locator('#save-button')
     }
     async goToAccount(){ 
         this.page.goto('https://qatest.commentsoldrt.com/account')
@@ -52,11 +57,11 @@ exports.CreditCardPurchase = class CreditCardPurchase {
     }
     async addAddress(){ 
         await this.page.getByLabel('Delivery').check();
-        await this.page.locator('.shipping-input-containers > div:nth-child(2) > .default-input').fill('123 state st');
-        await this.page.locator('#locality').fill('weston');
-        await this.page.locator('.address-row > div:nth-child(3) > .default-input').fill('33326');
-        await this.page.locator('select[name="state"]').selectOption('FL');
-        await this.page.locator('#save-button').click()
+        await this.addressfield.fill('123 state st');
+        await this.cityfield.fill('weston');
+        await this.zipfield.fill('33326');
+        await this.statefield.selectOption('FL');
+        await this.addresssavebutton.click()
     }
     async addCreditCard() {
         await this.ccLabel.click()
