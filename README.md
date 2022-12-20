@@ -27,17 +27,17 @@ Added comments in some of the areas in which I would automate the API, rather th
 const arr = [2,7,9,0]
 
 var plusOne = function(digits) {
-  let i = digits.length;
-  let carry = 1;
-  let tmp;
-  const res = [];
-  while(i > 0 || carry) {
-    tmp = (--i >= 0 ? digits[i] : 0) + carry;
-    carry = tmp / 10 | 0;
-    res.unshift(tmp % 10);
-  }
-  console.log(res)
-  return res;
-};
+    >  let i = digits.length;
+    >  let carry = 1;
+    >  let tmp;
+    >  const res = [];
+    >  while(i > 0 || carry) {
+    >    tmp = (--i >= 0 ? digits[i] : 0) + carry;
+    >   carry = tmp / 10 | 0;
+    >    res.unshift(tmp % 10);
+    >  }
+    >  console.log(res)
+    >  return res;
+    > };
 
 plusOne(arr)
