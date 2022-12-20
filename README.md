@@ -24,7 +24,8 @@ Added comments in some of the areas in which I would automate the API, rather th
 
 ### Coding Problem 
 
-```const arr = [2,7,9,0]
+```
+const arr = [2,7,9,0]
 
 var plusOne = function(digits) {
   let i = digits.length;
