@@ -1,6 +1,8 @@
 const { test: base } = require('@playwright/test');
 const chance = require('chance').Chance();
+const { Password } = require('./passwordGen');
 
+const password = new Password();
 
 exports.User = class User {
     /**
@@ -10,9 +12,6 @@ exports.User = class User {
         this.firstName = chance.first(),
         this.lastName = chance.last(),
         this.email = chance.email(),
-        this.passwordLower= chance.string({ length: 3, casing: 'lower', alpha: true, }),
-        this.passwordUpper= chance.string({ length: 3, casing: 'upper', alpha: true, }),
-        this.passwordNum = chance.string({ length: 3, numeric: true }),
-        this.fullPassword= this.passwordLower + this.passwordUpper + this.passwordNum
+        this.fullPassword = password.password()
     }
 }

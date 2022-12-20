@@ -25,21 +25,30 @@ Added comments in some of the areas in which I would automate the API, rather th
 ### Coding Problem 
 
 ```
-const arr = [2,7,9,0]
+const array = [2,7,9,0]
 
-var plusOne = function(digits) {
-  let i = digits.length;
-  let carry = 1;
-  let tmp;
-  const res = [];
-  while(i > 0 || carry) {
-    tmp = (--i >= 0 ? digits[i] : 0) + carry;
-    carry = tmp / 10 | 0;
-    res.unshift(tmp % 10);
-  }
-  console.log(res)
-  return res;
-};
+function incrementArrayNumber(arr){ 
+    let carry = 1; 
 
-plusOne(arr) 
+    for (let i = arr.length - 1; i >= 0; i --){
+
+        arr[i] += carry; 
+
+        if (arr[i] >= 10 ){ 
+            carry = 1; 
+            arr[i] -= 10;
+        }
+        else { 
+            carry = 0
+            break; 
+        }
+    }
+    if carry === 1 { 
+        arr.unshift(1);
+    }
+    return arr; 
+}
+
+console.log(incrementArrayNumber(array))
+
 ```
